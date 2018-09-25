@@ -1,31 +1,24 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
-	"time"
+	"os"
 )
 
 func main() {
-	//reader := bufio.NewReader(os.Stdin)
+	reader := bufio.NewReader(os.Stdin)
 	fmt.Println(">>> Start Game Development >>> ")
-	command := "#"
 
 	for {
-		fmt.Println("Command: ")
-		fmt.Scanln(command)
-
-		time.Sleep(5 * time.Second)
-
-		if command == "#" {
+		fmt.Print("\nCommand: ")
+		command, err := reader.ReadBytes('\n')
+		if err != nil {
+			fmt.Println(err)
+		}
+		if string(command) == "exit\n" {
 			break
 		}
-
-		//switch expression {
-		//case condition:
-
-		//default condition:
-		//continue;
-		//}
 	}
 
 	fmt.Println("Bye!")
